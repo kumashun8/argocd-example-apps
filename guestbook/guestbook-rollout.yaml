@@ -7,14 +7,40 @@ spec:
   strategy:
     canary:
       steps:
-      - setWeight: 20
-      - pause: {}
-      - setWeight: 40
-      - pause: {duration: 10}
-      - setWeight: 60
-      - pause: {duration: 10}
-      - setWeight: 80
-      - pause: {duration: 10}
+      - setWeight: 10
+      - pause: {duration: 30m}
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo-A
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - name: rollouts-demo
+        image: argoproj/rollouts-demo:green
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            memory: 32Mi
+            cpu: 5m
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: rollouts-demo-B
+spec:
+  replicas: 5
+  strategy:
+    canary:
+      steps:
+      - setWeight: 10
+      - pause: {duration: 30m}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
