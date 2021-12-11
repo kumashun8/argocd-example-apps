@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: rollouts-demo-A
+  name: rollouts-demo-a
 spec:
   replicas: 5
   strategy:
@@ -12,11 +12,11 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: rollouts-demo-A
+      app: rollouts-demo-a
   template:
     metadata:
       labels:
-        app: rollouts-demo-A
+        app: rollouts-demo-a
     spec:
       containers:
       - name: rollouts-demo
@@ -33,7 +33,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: rollouts-demo-B
+  name: rollouts-demo-b
 spec:
   replicas: 5
   strategy:
@@ -44,11 +44,11 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: rollouts-demo-B
+      app: rollouts-demo-b
   template:
     metadata:
       labels:
-        app: rollouts-demo-B
+        app: rollouts-demo-b
     spec:
       containers:
       - name: rollouts-demo
