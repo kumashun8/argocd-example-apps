@@ -20,7 +20,7 @@ spec:
         app: rollouts-demo-{{$val}}
     spec:
       containers:
-      - name: rollouts-demo-{{$val}}
+      - name: rollouts-demo
         image: argoproj/rollouts-demo:blue
         ports:
         - name: http
