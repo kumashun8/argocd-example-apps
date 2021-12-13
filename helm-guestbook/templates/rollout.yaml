@@ -1,4 +1,4 @@
-{{- range $val := list "a" }}
+{{- range $val := list "a" "b" "c" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
